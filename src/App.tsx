@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Footer from "./components/Footer";
+import Box from "@mui/material/Box";
+import "./App.scss";
 
-function App() {
+import TabGroup from "./components/TabGroup";
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexFlow: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <span className="heading">Unit Converter</span>
+        <TabGroup />
+        {/* <Converter /> */}
+      </Box>
+
+      <Footer></Footer>
     </div>
   );
-}
+};
 
 export default App;
