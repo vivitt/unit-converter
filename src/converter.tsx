@@ -16,5 +16,6 @@ export const findMultiplier = (
     (u) => u.resourceName === c
   );
   console.log(unitsArr, "****");
+  console.log(unitsArr[0].multiplier);
   return unitsArr[0].multiplier;
 };

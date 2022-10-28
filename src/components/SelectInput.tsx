@@ -16,8 +16,6 @@ interface IProps {
   direction: string;
   state: IUnit;
   setState: React.Dispatch<React.SetStateAction<IUnit>>;
-  setError: React.Dispatch<React.SetStateAction<string>>;
-  setResult: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SelectInput: React.FC<IProps> = ({
@@ -26,22 +24,12 @@ const SelectInput: React.FC<IProps> = ({
   direction,
   setState,
   state,
-  setError,
-  setResult,
 }: IProps) => {
   const [unit, setUnit] = useState<string>("");
 
-  useEffect(() => {
-    setState({
-      resourceName: unit,
-      multiplier: state.multiplier,
-    });
-  }, [unit]);
-
   const handleChange = (event: SelectChangeEvent) => {
     setUnit(event.target.value as string);
-    setError("");
-    setResult("");
+
     setState({
       resourceName: unit,
       multiplier: findMultiplier(conversionType, units, unit),
@@ -53,10 +41,9 @@ const SelectInput: React.FC<IProps> = ({
       <FormControl fullWidth>
         <InputLabel id={conversionType}>{direction}</InputLabel>
         <Select
-          labelId={direction}
+          defaultValue={options[0].resourceName}
           id={direction}
-          value={state.resourceName}
-          label={direction}
+          value={unit}
           onChange={handleChange}
         >
           {options.map((u) => (
