@@ -16,6 +16,7 @@ interface IProps {
   direction: string;
   state: IUnit;
   setState: React.Dispatch<React.SetStateAction<IUnit>>;
+  isDisabled: boolean;
 }
 
 const SelectInput: React.FC<IProps> = ({
@@ -24,28 +25,23 @@ const SelectInput: React.FC<IProps> = ({
   direction,
   setState,
   state,
+  isDisabled,
 }: IProps) => {
   const [unit, setUnit] = useState<string>("");
 
   const handleChange = (event: SelectChangeEvent) => {
     setUnit(event.target.value as string);
-
     setState({
-      resourceName: unit,
-      multiplier: findMultiplier(conversionType, units, unit),
+      resourceName: event.target.value,
+      multiplier: findMultiplier(conversionType, units, event.target.value),
     });
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={isDisabled}>
         <InputLabel id={conversionType}>{direction}</InputLabel>
-        <Select
-          defaultValue={options[0].resourceName}
-          id={direction}
-          value={unit}
-          onChange={handleChange}
-        >
+        <Select id={direction} value={unit} onChange={handleChange}>
           {options.map((u) => (
             <MenuItem value={u.resourceName}>{u.resourceName}</MenuItem>
           ))}

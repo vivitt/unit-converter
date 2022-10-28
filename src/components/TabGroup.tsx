@@ -22,8 +22,8 @@ const TabGroup: React.FC = () => {
     resourceName: "",
     multiplier: 0,
   });
-
-  const [numberToConvert, setNumberToConvert] = useState<string>("hol");
+  const [disableTo, setDisableTo] = useState<boolean>(true);
+  const [numberToConvert, setNumberToConvert] = useState<string>("");
 
   const [result, setResult] = useState<string>("0");
 
@@ -41,57 +41,46 @@ const TabGroup: React.FC = () => {
     console.log(n, from.multiplier, to.multiplier);
     return convert(n, from.multiplier, to.multiplier);
   };
+  useEffect(() => {
+    if (from.resourceName !== "") {
+      setDisableTo(false);
+    }
+  }, [from]);
 
   useEffect(() => {
     setResult(getResult(numberToConvert));
     console.log(result);
-  }, [to]);
+  }, [to, from, numberToConvert]);
 
   return (
     <Tabs>
       <TabList>
         {units.map((u) => (
-          <Tab>{u.slug}</Tab>
+          <Tab>{u.emoji}</Tab>
         ))}
       </TabList>
       {units.map((u) => (
         <TabPanel>
+          <div className="title">
+            <h2>{u.slug}</h2>
+          </div>
           <div className="converter">
-            <div className="form">
-              {/* <InputField
+            <div className="converter__input">
+              <InputField
                 numberToConvert={numberToConvert}
                 setNumberToConvert={setNumberToConvert}
-              /> */}
-              <input
-                type="number"
-                value={numberToConvert}
-                placeholder="0"
-                onChange={(e) => {
-                  setNumberToConvert(e.target.value);
-                }}
-              ></input>
-              <select
-                value={from.resourceName}
-                onChange={(e) => {
-                  let n = e.target.value;
-                  setFrom({
-                    resourceName: n,
-                    multiplier: findMultiplier(u.slug, units, n),
-                  });
-                }}
-                placeholder="From"
-              >
-                {u.units.map((o) => (
-                  <option value={o.resourceName}>{o.resourceName}</option>
-                ))}
-              </select>
-              {/* <SelectInput
+              />
+
+              <SelectInput
                 conversionType={u.slug}
                 options={u.units}
                 direction="From"
                 state={from}
                 setState={setFrom}
-              ></SelectInput> */}
+                isDisabled={false}
+              ></SelectInput>
+            </div>
+            <div className="converter__units">
               <span>
                 <p>
                   {to.multiplier} {to.resourceName}
@@ -101,30 +90,27 @@ const TabGroup: React.FC = () => {
                   {from.multiplier} {from.resourceName}
                 </p>
               </span>
-              <span>
-                <h4>=</h4>
-              </span>
-              <p>{result}</p>
-              <select
-                value={to.resourceName}
-                onChange={(e) => {
-                  let n = e.target.value;
-                  setTo({
-                    resourceName: n,
-                    multiplier: findMultiplier(u.slug, units, n),
-                  });
-                }}
-                defaultValue={1}
-              >
-                {u.units.map((o) => (
-                  <option value={o.resourceName}>{o.resourceName}</option>
-                ))}
-              </select>
             </div>
-            {/* <Button variant="outlined" onClick={handleSwap}>
+            <div className="converter__equalSign">
+              <span>
+                <h1>=</h1>
+              </span>
+            </div>
+            <div className="converter__results">
+              <p>{result}</p>
+              <SelectInput
+                conversionType={u.slug}
+                options={u.units}
+                direction="To"
+                state={to}
+                setState={setTo}
+                isDisabled={disableTo}
+              ></SelectInput>
+            </div>
+          </div>
+          {/* <Button variant="outlined" onClick={handleSwap}>
               <SwapHorizIcon></SwapHorizIcon>
             </Button> */}
-          </div>
         </TabPanel>
       ))}
     </Tabs>

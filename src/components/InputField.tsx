@@ -21,7 +21,7 @@ const InputField: React.FC<IProps> = ({
       id="numberToConverInput"
       variant="outlined"
       value={numberToConvert}
-      placeholder="0"
+      // placeholder="0"
       type="number"
       onChange={(e) => {
         setNumberToConvert(e.target.value);

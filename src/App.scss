@@ -36,9 +36,16 @@
     transform: rotate(360deg);
   }
 }
-.form__selects {
+.converter {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  &__input,
+  &__results {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
