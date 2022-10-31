@@ -40,8 +40,15 @@ const SelectInput: React.FC<IProps> = ({
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth disabled={isDisabled}>
-        <InputLabel id={conversionType}>{direction}</InputLabel>
-        <Select id={direction} value={unit} onChange={handleChange}>
+        <InputLabel htmlFor={direction} size="small">
+          {direction}
+        </InputLabel>
+        <Select
+          id={direction}
+          value={state.resourceName}
+          onChange={handleChange}
+          size="small"
+        >
           {options.map((u) => (
             <MenuItem value={u.resourceName}>{u.resourceName}</MenuItem>
           ))}

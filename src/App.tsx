@@ -17,9 +17,7 @@ const App: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <span className="heading">Unit Converter</span>
         <TabGroup />
-        {/* <Converter /> */}
       </Box>
 
       <Footer></Footer>

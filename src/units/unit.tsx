@@ -10,12 +10,13 @@ export interface IUnitGroup {
   slug: string;
   emoji: string;
   units: IUnit[];
+  color: string;
 }
 
 export const units: IUnitGroup[] = [
   {
     category: "UnitGroup_Cooking",
-
+    color: "#F0D1FF",
     sort: 1,
     slug: "cooking",
     emoji: "🍪",
@@ -52,7 +53,7 @@ export const units: IUnitGroup[] = [
   },
   {
     category: "UnitGroup_Distance",
-
+    color: "#B8FFDD",
     sort: 2,
     slug: "distance",
     emoji: "🏃🏽‍♀️",
@@ -96,7 +97,7 @@ export const units: IUnitGroup[] = [
   },
   {
     category: "UnitGroup_Temp",
-
+    color: "#A381B3",
     sort: 3,
     slug: "temperature",
     emoji: "🌡",
@@ -120,7 +121,7 @@ export const units: IUnitGroup[] = [
   },
   {
     category: "UnitGroup_DigitalStorage",
-
+    color: "#FFE7B8",
     sort: 4,
     slug: "digital storage",
     emoji: "👾",

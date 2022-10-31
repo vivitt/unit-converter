@@ -1,7 +1,7 @@
 import { IUnitGroup, units } from "./units/unit";
 
-export const convert = (q: number, from: number, to: number): string => {
-  return JSON.stringify(q * (to / from));
+export const convert = (q: number, from: number, to: number): number => {
+  return q * (to / from);
 };
 
 export const findMultiplier = (
@@ -11,7 +11,6 @@ export const findMultiplier = (
 ): number => {
   const conversionTypeArr = b.filter((u) => u.slug === a);
 
-  console.log(conversionTypeArr, "$$$");
   const unitsArr = conversionTypeArr[0].units.filter(
     (u) => u.resourceName === c
   );

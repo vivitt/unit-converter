@@ -6,10 +6,10 @@ import { IUnit } from "../units/unit";
 import SelectInput from "./SelectInput";
 import InputField from "./InputField";
 import { useState, useEffect } from "react";
-import { findMultiplier } from "../converter";
+
 import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import FormControl from "@mui/material/FormControl";
+
 import { convert } from "../converter";
 
 const TabGroup: React.FC = () => {
@@ -22,25 +22,30 @@ const TabGroup: React.FC = () => {
     resourceName: "",
     multiplier: 0,
   });
-  const [disableTo, setDisableTo] = useState<boolean>(true);
-  const [numberToConvert, setNumberToConvert] = useState<string>("");
 
-  const [result, setResult] = useState<string>("0");
+  const [disableTo, setDisableTo] = useState<boolean>(true);
+  const [numberToConvert, setNumberToConvert] = useState<string>("-");
+  const [result, setResult] = useState<string>("-");
 
   const [error, setError] = useState<string>("");
 
-  // const handleSwap = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   const prev = from;
-  //   setFrom(to);
-  //   setTo(prev);
-  // };
+  const handleSwap = () => {
+    const prev = { ...from };
+    setFrom({ ...to });
+    setTo({ ...prev });
+  };
 
   const getResult = (a: string): string => {
-    const n = parseInt(a);
-    console.log(n, from.multiplier, to.multiplier);
-    return convert(n, from.multiplier, to.multiplier);
+    if (a !== "-") {
+      const n = parseInt(a);
+
+      const r = convert(n, from.multiplier, to.multiplier);
+      return r.toFixed(3);
+    } else {
+      return "";
+    }
   };
+
   useEffect(() => {
     if (from.resourceName !== "") {
       setDisableTo(false);
@@ -49,71 +54,98 @@ const TabGroup: React.FC = () => {
 
   useEffect(() => {
     setResult(getResult(numberToConvert));
-    console.log(result);
   }, [to, from, numberToConvert]);
 
   return (
-    <Tabs>
-      <TabList>
+    <div className="converter">
+      <Tabs>
+        <TabList style={{ border: "none", margin: 0, zIndex: 0 }}>
+          {units.map((u) => (
+            <Tab
+              style={{
+                backgroundColor: `${u.color}`,
+                border: 0,
+                borderRadius: "5px 5px 0 0 ",
+                bottom: "0",
+              }}
+              onClick={() => {
+                setResult("-");
+                setTo({
+                  resourceName: "",
+                  multiplier: 0,
+                });
+                setFrom({
+                  resourceName: "",
+                  multiplier: 0,
+                });
+              }}
+            >
+              {u.emoji}
+            </Tab>
+          ))}
+        </TabList>
         {units.map((u) => (
-          <Tab>{u.emoji}</Tab>
-        ))}
-      </TabList>
-      {units.map((u) => (
-        <TabPanel>
-          <div className="title">
-            <h2>{u.slug}</h2>
-          </div>
-          <div className="converter">
-            <div className="converter__input">
-              <InputField
-                numberToConvert={numberToConvert}
-                setNumberToConvert={setNumberToConvert}
-              />
+          <TabPanel
+            style={{
+              backgroundColor: `${u.color}`,
+              border: 0,
+              borderRadius: "10px",
+              zIndex: 10,
+            }}
+          >
+            <div className="converter__title">
+              <h1>{u.slug}</h1>
+              <h4>Unit Converter</h4>
+            </div>
+            <div className="converter__form">
+              <div className="converter__input">
+                <InputField
+                  value={numberToConvert}
+                  setValue={setNumberToConvert}
+                  type="number"
+                  readonly={false}
+                />
 
-              <SelectInput
-                conversionType={u.slug}
-                options={u.units}
-                direction="From"
-                state={from}
-                setState={setFrom}
-                isDisabled={false}
-              ></SelectInput>
+                <SelectInput
+                  conversionType={u.slug}
+                  options={u.units}
+                  direction="From"
+                  state={from}
+                  setState={setFrom}
+                  isDisabled={false}
+                ></SelectInput>
+              </div>
+
+              <div className="converter__equalSign">
+                <Button
+                  variant="text"
+                  onClick={handleSwap}
+                  sx={{ color: "white" }}
+                >
+                  <SwapHorizIcon></SwapHorizIcon>
+                </Button>
+              </div>
+              <div className="converter__results">
+                <InputField
+                  value={to.resourceName === "" ? "" : result}
+                  setValue={setResult}
+                  type="text"
+                  readonly={true}
+                />
+                <SelectInput
+                  conversionType={u.slug}
+                  options={u.units}
+                  direction="To"
+                  state={to}
+                  setState={setTo}
+                  isDisabled={disableTo}
+                ></SelectInput>
+              </div>
             </div>
-            <div className="converter__units">
-              <span>
-                <p>
-                  {to.multiplier} {to.resourceName}
-                </p>
-                <p>-----------------</p>
-                <p>
-                  {from.multiplier} {from.resourceName}
-                </p>
-              </span>
-            </div>
-            <div className="converter__equalSign">
-              <span>
-                <h1>=</h1>
-              </span>
-            </div>
-            <div className="converter__results">
-              <p>{result}</p>
-              <SelectInput
-                conversionType={u.slug}
-                options={u.units}
-                direction="To"
-                state={to}
-                setState={setTo}
-                isDisabled={disableTo}
-              ></SelectInput>
-            </div>
-          </div>
-          {/* <Button variant="outlined" onClick={handleSwap}>
-              <SwapHorizIcon></SwapHorizIcon>
-            </Button> */}
-        </TabPanel>
-      ))}
-    </Tabs>
+          </TabPanel>
+        ))}
+      </Tabs>
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 const Footer: React.FC = () => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", position: "absolute", bottom: "0" }}>
       <div>
         <p>
           <Link
