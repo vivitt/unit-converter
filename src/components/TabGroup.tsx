@@ -11,7 +11,6 @@ import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import { convert } from "../converter";
-import { JsxElement } from "typescript";
 
 const TabGroup: React.FC = () => {
   const [from, setFrom] = useState<IUnit>({

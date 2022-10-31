@@ -1,6 +1,6 @@
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Paper from "@mui/material/Paper";
+
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 const Footer: React.FC = () => {

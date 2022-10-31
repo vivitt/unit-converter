@@ -1,4 +1,4 @@
-import { IUnitGroup, units } from "./units/unit";
+import { IUnitGroup } from "./units/unit";
 
 export const convert = (q: number, from: number, to: number): number => {
   return q * (to / from);

@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <TabGroup />
       </Box>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
