@@ -9,8 +9,9 @@ import { useState, useEffect } from "react";
 
 import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-
+import SwapVertIcon from "@mui/icons-material/SwapVert";
 import { convert } from "../converter";
+import { JsxElement } from "typescript";
 
 const TabGroup: React.FC = () => {
   const [from, setFrom] = useState<IUnit>({
@@ -38,7 +39,7 @@ const TabGroup: React.FC = () => {
   const getResult = (a: string): string => {
     if (a !== "-") {
       const n = parseInt(a);
-
+      console.log(window.innerWidth);
       const r = convert(n, from.multiplier, to.multiplier);
       return r.toFixed(3);
     } else {
@@ -94,7 +95,7 @@ const TabGroup: React.FC = () => {
             }}
           >
             <div className="converter__title">
-              <h1>{u.slug}</h1>
+              <h1>{u.slug[0].toUpperCase() + u.slug.substring(1)}</h1>
               <h4>Unit Converter</h4>
             </div>
             <div className="converter__form">
@@ -122,7 +123,11 @@ const TabGroup: React.FC = () => {
                   onClick={handleSwap}
                   sx={{ color: "white" }}
                 >
-                  <SwapHorizIcon></SwapHorizIcon>
+                  {window.innerWidth >= 576 ? (
+                    <SwapHorizIcon></SwapHorizIcon>
+                  ) : (
+                    <SwapVertIcon></SwapVertIcon>
+                  )}
                 </Button>
               </div>
               <div className="converter__results">

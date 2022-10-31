@@ -24,7 +24,7 @@ const InputField: React.FC<IProps> = ({
 }) => {
   return (
     <TextField
-      sx={{ width: "100px" }}
+      sx={{ width: "100px", margin: "3px" }}
       id="numberToConverInput"
       variant="outlined"
       value={value}

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-
+@import "styles/mixins";
+@import "styles/variables";
 .App {
   text-align: center;
   padding-top: 5rem;
@@ -26,10 +27,17 @@
   }
   &__form {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    @include sm {
+      display: flex;
+      flex-flow: nowrap;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
   }
 
   &__input,

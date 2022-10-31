@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <p>
           <Link
             color="secondary"
-            href="https://github.com/Rviewer-Challenges/uGVtM3PdS45c4PdTPLKU/tree/devel"
+            href="https://github.com/Rviewer-Challenges/uGVtM3PdS45c4PdTPLKU"
             target="blank"
           >
             <GitHubIcon fontSize="small"></GitHubIcon>About Unit Converter
