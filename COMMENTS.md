@@ -21,7 +21,7 @@ This app has a main view that includes 4 components:
 - An InputField: used for submiting the number to convert and to display the converted data
 - A SelectInput: that shows all the disponibles units for a conversion type
 
-The values to make the conversions are stored in the [unit.tsx]("src/units/unit.tsx") file, where an array of objects includes all the types of conversion an the units for each one.
+The values to make the conversions are stored in the [unit.tsx](src/units/unit.tsx) file, where an array of objects includes all the types of conversion an the units for each one.
 
 ## Installation
 
