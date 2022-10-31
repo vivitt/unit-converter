@@ -44,6 +44,8 @@ const SelectInput: React.FC<IProps> = ({
           {direction}
         </InputLabel>
         <Select
+          label={direction}
+          labelId={direction}
           id={direction}
           value={state.resourceName}
           onChange={handleChange}
