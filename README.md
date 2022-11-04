@@ -9,8 +9,8 @@
   </div>
 
 <div align="center">
-<img src="public/image-01.png" alt="Homepage register light mode" width="400"  />
-<img src="public/image-02.png" alt="Homepage register light mode" width="400"  />
+<img src="public/image-01.png" alt="Unit converter app" width="400"  />
+<img src="public/image-02.png" alt="Unit converter app" width="400"  />
 </div>
 
 ## STRUCTURE
