@@ -6,7 +6,7 @@ import { IUnit } from "../units/unit";
 import SelectInput from "./SelectInput";
 import InputField from "./InputField";
 import { useState, useEffect } from "react";
-import CurrencyTab from "./CurrencyTab";
+
 import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
@@ -83,18 +83,6 @@ const TabGroup: React.FC = () => {
               {u.emoji}
             </Tab>
           ))}
-          <Tab
-            key="currency"
-            style={{
-              backgroundColor: "red",
-              border: 0,
-              borderRadius: "5px 5px 0 0 ",
-              bottom: "0",
-            }}
-            onClick={() => handleNavigateTabs()}
-          >
-            💸
-          </Tab>
         </TabList>
         {units.map((u) => (
           <TabPanel
@@ -157,20 +145,6 @@ const TabGroup: React.FC = () => {
             </div>
           </TabPanel>
         ))}
-        <TabPanel
-          style={{
-            backgroundColor: "red",
-            border: 0,
-            borderRadius: "10px",
-            zIndex: 10,
-          }}
-        >
-          <CurrencyTab
-            isDisabled={disableTo}
-            handleSwap={handleSwap}
-            getArrowIcon={getArrowIcon}
-          />
-        </TabPanel>
       </Tabs>
     </div>
   );
