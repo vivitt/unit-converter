@@ -1,80 +1,47 @@
-# Unit Converter APP
+<div id="header" align="center">
+  <h1> UNIT CONVERTER APP </h1>
 
-Have you ever tried creating your own unit converter? Yes, an app with which you can instantly transform units. Weight,
-temperature, time, length, power, currency... And many more!
+[🔗 Unit Converter](https://vivitt.github.io/rick_morty_app/)
 
-When we think of these apps, the typical conversion app comes to mind: from Euros to Dollars, from degrees Celsius to
-Fahrenheit, from Kilometers to Miles... But we can also make more complex transformations between various measurement
-systems.
+[![CodeFactor](https://www.codefactor.io/repository/github/vivitt/rick_morty_app/badge/master)](https://www.codefactor.io/repository/github/vivitt/rick_morty_app/overview/master)
 
-The goal of this challenge is that you can create your own app to convert units. You’ll decide the level of difficulty
-and complexity, your imagination will be the limit!
+  <p>A webapp made with REACT and TYPESCRIPT to convert different kind of units</p>
+  </div>
 
-![Brais Moure Challenge card](./.github/assets/mouredev_unit_converter.png)
-> This is a challenge created by [MoureDev](https://www.twitch.tv/mouredev). He will review and give feedback to some
-> proposed solutions from the community in one of his Twitch livestreams 😻
+<div align="center">
+<img src="public/Screenshot-01.png" alt="Homepage register light mode" width="400"  />
 
+</div>
 
----
+## STRUCTURE
 
-## What you'll create
+This app has a main view that includes 4 components:
 
-### General level:
+- A TabGroup : this component renders a tab and a tab panel for each type of conversion and group them all
+- An InputField: used for submiting the number to convert and to display the converted data
+- A SelectInput: that shows all the disponibles units for a conversion type
+- Footer
 
-- This test is designed for all levels. You can create something very simple (i.e. an app that transforms
-  units in a system), or something more fancy like an application that transforms between systems and that is not
-  only focused on one type of unit.
-- Different types of units have been mentioned, but you decide what to make the project about (it can be about units
-  that have not been mentioned, there are infinite...). The decision is yours!
-- Conversions must be able to be done in any direction, that is, if the project supports meters, decimeters, centimeters
-  and millimeters, the app must cover all possible combinations of conversion.
-- The use of the app should be as simple as possible. This is the real challenge of this exercise, if I want to do a
-  transformation it has to be something very fast and easy!
+<<<<<<< HEAD
+The value of each unit to make the conversions is stored in the [unit.tsx](src/units/unit.tsx) file, where an array of objects includes all the types of conversion an the units for each one, with the unit name and the unit value.
 
-### Screens
+# I have also a [converter.tsx](src/converter.tsx) file, where I keep two helper functions that are used inside the TabGroup component to get the result.
 
-- If your app allows to transform many types of units, it must have a selection screen and a detail screen with the
-  converter.
-- If you decide that your application only supports one family of units, it can be all in one screen.
+The values to make the conversions are stored in the [unit.tsx](src/units/unit.tsx) file, where an array of objects includes all the types of conversion an the units for each one.
 
-> I remind you that you should work on making sure that to achieve a result you have to make the fewest number of
-> clicks.
+> > > > > > > 69d75c50764d3afbc560add565a290b66ad6adfe
 
-### Extra points
+## Installation
 
-Do you dare to use other types of less common units of measurement? Apart from the typical units, there are many others
-that we could include in our app. From soccer fields to kilometers converter, or a beard/seconds converter. Don't put
-that face, it exists. 
+npm i
 
-You have the freedom of creativity, let's see what you can surprise us with!
+npm start
 
-## Technical requirements
+## Stack
 
-* Create a **clean**, **maintainable** and **well-designed** code. We expect to see a good and clear architecture that
-  allows to add or modify the solution without so much troubles.
-* **Test** your code until you are comfortable with it. We don't expect a 100% of Code Coverage but some tests that
-  helps to have a more stable and confident base code.
+This app was made with **Typescript**, **React** and **MUI**
+Also included [React Tabs](https://www.npmjs.com/package/react-tabs)
 
-To understand how you take decisions during the implementation, **please write a COMMENTS.md** file explaining some of
-the most important parts of the application. You would also be able to defend your code through
-[Rviewer](https://rviewer.io), once you submit your solution.
+**Axios**
 
----
-
-## How to submit your solution
-
-* Push your code to the `devel` branch - we encourage you to commit regularly to show your thinking process was.
-* **Create a new Pull Request** to `main` branch & **merge it**.
-
-Once merged you **won't be able to change or add** anything to your solution, so double-check that everything is as you
-expected!
-
-Remember that **there is no countdown**, so take your time and implement a solution that you are proud!
-
---- 
-
-<p align="center">
-  If you have any feedback or problem, <a href="mailto:help@rviewer.io">let us know!</a> 🤘
-  <br><br>
-  Made with ❤️ by <a href="https://rviewer.io">Rviewer</a>
-</p>
+**SASS**
