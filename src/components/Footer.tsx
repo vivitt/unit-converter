@@ -3,11 +3,22 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-const Footer: React.FC = () => {
+interface IProps {
+  color: string;
+}
+
+const Footer: React.FC<IProps> = ({ color }) => {
   return (
-    <Box sx={{ width: "100%", position: "absolute", bottom: "0" }}>
-      <div>
-        <p>
+    <Box
+      sx={{
+        width: "100%",
+        position: "absolute",
+        bottom: "0",
+        backgroundColor: color,
+      }}
+    >
+      <div className="footer">
+        <p className="footer__link">
           <Link
             color="secondary"
             href="https://github.com/Rviewer-Challenges/uGVtM3PdS45c4PdTPLKU"
@@ -16,9 +27,10 @@ const Footer: React.FC = () => {
             <GitHubIcon fontSize="small"></GitHubIcon>Unit Converter
           </Link>
         </p>
-      </div>
-      <div>
-        <p>© Viviana Yanez 2022 | Made with ♥︎</p>
+
+        <div className="footer__text">
+          <p>© Viviana Yanez 2022 | Made with ♥︎</p>
+        </div>
       </div>
     </Box>
   );

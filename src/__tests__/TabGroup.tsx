@@ -1,11 +1,13 @@
 import { fireEvent, render, screen, cleanup } from "@testing-library/react";
 import TabGroup from "../components/TabGroup";
-
+import App from "../App";
 afterEach(cleanup);
 
 describe("TabGroup", () => {
+  beforeEach(() => {
+    render(<App />);
+  });
   test("should render inputs", () => {
-    render(<TabGroup />);
     const inputnumber = screen.getByTestId("number");
     expect(inputnumber).toBeInTheDocument();
 
@@ -14,7 +16,6 @@ describe("TabGroup", () => {
   });
 
   test("should numberinput have value", () => {
-    render(<TabGroup />);
     const inputnumber = screen.getByTestId("number");
 
     fireEvent.change(inputnumber, {
@@ -24,14 +25,11 @@ describe("TabGroup", () => {
   });
 
   test("should result input be readonly", () => {
-    render(<TabGroup />);
     const inputresult = screen.getByTestId("text");
     expect(inputresult).toHaveAttribute("readOnly");
   });
 
   test("should render select inputs and get results", () => {
-    render(<TabGroup />);
-
     //should render selects
     const from = screen.getByTestId("From");
     expect(from).toBeInTheDocument();
@@ -64,7 +62,6 @@ describe("TabGroup", () => {
   });
 
   test("should navigate Distance conversion", () => {
-    render(<TabGroup />);
     const distanceIcon = screen.getByText("🏃🏽‍♀️");
     expect(distanceIcon).toBeInTheDocument();
 

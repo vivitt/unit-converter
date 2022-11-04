@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import "./styles/App.scss";
@@ -6,6 +6,7 @@ import "./styles/App.scss";
 import TabGroup from "./components/TabGroup";
 
 const App: React.FC = () => {
+  const [color, setColor] = useState<string>("#F0D1FF");
   return (
     <div className="App">
       <Box
@@ -17,10 +18,10 @@ const App: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <TabGroup />
+        <TabGroup setColor={setColor} />
       </Box>
 
-      <Footer />
+      <Footer color={color} />
     </div>
   );
 };

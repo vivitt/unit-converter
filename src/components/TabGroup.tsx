@@ -12,7 +12,10 @@ import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import { getResult } from "../converter";
 
-const TabGroup: React.FC = () => {
+interface IProps {
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+}
+const TabGroup: React.FC<IProps> = ({ setColor }) => {
   const [from, setFrom] = useState<IUnit>({
     resourceName: "",
     multiplier: 0,
@@ -26,10 +29,8 @@ const TabGroup: React.FC = () => {
   const [disableTo, setDisableTo] = useState<boolean>(true);
   const [numberToConvert, setNumberToConvert] = useState<string>("");
   const [result, setResult] = useState<string>("-");
-  const [options, setOptions] = ["peso", "dolar", "euro"];
-  // const [error, setError] = useState<string>("");
 
-  const handleNavigateTabs = () => {
+  const handleNavigateTabs = (color: string) => {
     setResult("-");
     setTo({
       resourceName: "",
@@ -39,6 +40,7 @@ const TabGroup: React.FC = () => {
       resourceName: "",
       multiplier: 0,
     });
+    setColor(color);
   };
 
   const handleSwap = () => {
@@ -78,7 +80,7 @@ const TabGroup: React.FC = () => {
                 borderRadius: "5px 5px 0 0 ",
                 bottom: "0",
               }}
-              onClick={() => handleNavigateTabs()}
+              onClick={() => handleNavigateTabs(u.color)}
             >
               {u.emoji}
             </Tab>
