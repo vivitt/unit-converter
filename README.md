@@ -36,6 +36,5 @@ npm start
 
 ## Stack
 
-This app was made with **Typescript**, **React** and **MUI**
+This app was made with **Typescript**, **React**, **SASS** and **MUI**
 Also includes the [React Tabs](https://www.npmjs.com/package/react-tabs) component.
-The styles are writen in **SASS**
