@@ -1,7 +1,7 @@
 <div id="header" align="center">
   <h1> UNIT CONVERTER APP </h1>
 
-[🔗 Unit Converter](https://vivitt.github.io/rick_morty_app/)
+[🔗 Unit Converter](https://theunitconverter.netlify.app/)
 
 [![CodeFactor](https://www.codefactor.io/repository/github/vivitt/rick_morty_app/badge/master)](https://www.codefactor.io/repository/github/vivitt/rick_morty_app/overview/master)
 
