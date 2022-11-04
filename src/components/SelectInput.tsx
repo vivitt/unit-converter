@@ -27,10 +27,7 @@ const SelectInput: React.FC<IProps> = ({
   state,
   isDisabled,
 }: IProps) => {
-  const [unit, setUnit] = useState<string>("");
-
   const handleChange = (event: SelectChangeEvent) => {
-    setUnit(event.target.value as string);
     setState({
       resourceName: event.target.value,
       multiplier: findMultiplier(conversionType, units, event.target.value),
