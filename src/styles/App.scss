@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import "styles/mixins";
-@import "styles/variables";
+@import "./mixins";
+@import "./variables";
 .App {
   text-align: center;
   padding-top: 5rem;

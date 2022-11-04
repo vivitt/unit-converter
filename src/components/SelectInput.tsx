@@ -46,6 +46,7 @@ const SelectInput: React.FC<IProps> = ({
         <Select
           label={direction}
           labelId={direction}
+          inputProps={{ "data-testid": direction }}
           id={direction}
           value={state.resourceName}
           onChange={handleChange}

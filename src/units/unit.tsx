@@ -69,6 +69,11 @@ export const units: IUnitGroup[] = [
         divider: 0.01,
       },
       {
+        resourceName: "kilometer",
+        multiplier: 0.001,
+        divider: 1000,
+      },
+      {
         resourceName: "inch",
         multiplier: 39.37,
         divider: 0.0254,

@@ -6,11 +6,11 @@ import { IUnit } from "../units/unit";
 import SelectInput from "./SelectInput";
 import InputField from "./InputField";
 import { useState, useEffect } from "react";
-
+import CurrencyTab from "./CurrencyTab";
 import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
-import { convert } from "../converter";
+import { getResult } from "../converter";
 
 const TabGroup: React.FC = () => {
   const [from, setFrom] = useState<IUnit>({
@@ -24,26 +24,27 @@ const TabGroup: React.FC = () => {
   });
 
   const [disableTo, setDisableTo] = useState<boolean>(true);
-  const [numberToConvert, setNumberToConvert] = useState<string>("-");
+  const [numberToConvert, setNumberToConvert] = useState<string>("");
   const [result, setResult] = useState<string>("-");
+  const [options, setOptions] = ["peso", "dolar", "euro"];
+  // const [error, setError] = useState<string>("");
 
-  const [error, setError] = useState<string>("");
+  const handleNavigateTabs = () => {
+    setResult("-");
+    setTo({
+      resourceName: "",
+      multiplier: 0,
+    });
+    setFrom({
+      resourceName: "",
+      multiplier: 0,
+    });
+  };
 
   const handleSwap = () => {
     const prev = { ...from };
     setFrom({ ...to });
     setTo({ ...prev });
-  };
-
-  const getResult = (a: string): string => {
-    if (a !== "-") {
-      const n = parseInt(a);
-      console.log(window.innerWidth);
-      const r = convert(n, from.multiplier, to.multiplier);
-      return r.toFixed(3);
-    } else {
-      return "";
-    }
   };
 
   useEffect(() => {
@@ -52,8 +53,16 @@ const TabGroup: React.FC = () => {
     }
   }, [from]);
 
+  const getArrowIcon = () => {
+    if (window.innerWidth >= 576) {
+      return <SwapHorizIcon data-testid="hor"></SwapHorizIcon>;
+    } else {
+      return <SwapVertIcon data-testid="ver"></SwapVertIcon>;
+    }
+  };
+
   useEffect(() => {
-    setResult(getResult(numberToConvert));
+    setResult(getResult(numberToConvert, from.multiplier, to.multiplier));
   }, [to, from, numberToConvert]);
 
   return (
@@ -62,27 +71,30 @@ const TabGroup: React.FC = () => {
         <TabList style={{ border: "none", margin: 0, zIndex: 0 }}>
           {units.map((u) => (
             <Tab
+              key={u.slug}
               style={{
                 backgroundColor: `${u.color}`,
                 border: 0,
                 borderRadius: "5px 5px 0 0 ",
                 bottom: "0",
               }}
-              onClick={() => {
-                setResult("-");
-                setTo({
-                  resourceName: "",
-                  multiplier: 0,
-                });
-                setFrom({
-                  resourceName: "",
-                  multiplier: 0,
-                });
-              }}
+              onClick={() => handleNavigateTabs()}
             >
               {u.emoji}
             </Tab>
           ))}
+          <Tab
+            key="currency"
+            style={{
+              backgroundColor: "red",
+              border: 0,
+              borderRadius: "5px 5px 0 0 ",
+              bottom: "0",
+            }}
+            onClick={() => handleNavigateTabs()}
+          >
+            💸
+          </Tab>
         </TabList>
         {units.map((u) => (
           <TabPanel
@@ -121,12 +133,9 @@ const TabGroup: React.FC = () => {
                   variant="text"
                   onClick={handleSwap}
                   sx={{ color: "white" }}
+                  data-testid="swapBtn"
                 >
-                  {window.innerWidth >= 576 ? (
-                    <SwapHorizIcon></SwapHorizIcon>
-                  ) : (
-                    <SwapVertIcon></SwapVertIcon>
-                  )}
+                  {getArrowIcon()}
                 </Button>
               </div>
               <div className="converter__results">
@@ -148,6 +157,20 @@ const TabGroup: React.FC = () => {
             </div>
           </TabPanel>
         ))}
+        <TabPanel
+          style={{
+            backgroundColor: "red",
+            border: 0,
+            borderRadius: "10px",
+            zIndex: 10,
+          }}
+        >
+          <CurrencyTab
+            isDisabled={disableTo}
+            handleSwap={handleSwap}
+            getArrowIcon={getArrowIcon}
+          />
+        </TabPanel>
       </Tabs>
     </div>
   );

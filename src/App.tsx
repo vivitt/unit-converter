@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
-import "./App.scss";
+import "./styles/App.scss";
 
 import TabGroup from "./components/TabGroup";
 

@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             href="https://github.com/Rviewer-Challenges/uGVtM3PdS45c4PdTPLKU"
             target="blank"
           >
-            <GitHubIcon fontSize="small"></GitHubIcon>About Unit Converter
+            <GitHubIcon fontSize="small"></GitHubIcon>Unit Converter
           </Link>
         </p>
       </div>

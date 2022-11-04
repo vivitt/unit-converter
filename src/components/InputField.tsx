@@ -12,7 +12,8 @@ const InputField: React.FC<IProps> = ({ type, readonly, value, setValue }) => {
   return (
     <TextField
       sx={{ width: "100px", margin: "3px" }}
-      id="numberToConverInput"
+      inputProps={{ "data-testid": type }}
+      id={type}
       variant="outlined"
       value={value}
       // placeholder="0"
