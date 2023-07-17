@@ -6,11 +6,6 @@
 <p>A webapp made with REACT and TYPESCRIPT to convert different kind of units</p>
   </div>
 
-<div align="center">
-
-<img src="public/image-02.png" alt="Unit converter app" width="400"  />
-</div>
-
 ## STRUCTURE
 
 This app has a main view that includes 4 components:
