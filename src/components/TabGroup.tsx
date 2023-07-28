@@ -6,16 +6,12 @@ import { IUnit } from "../units/unit";
 import SelectInput from "./SelectInput";
 import InputField from "./InputField";
 import { useState, useEffect } from "react";
-
 import Button from "@mui/material/Button";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import { getResult } from "../converter";
 
-interface IProps {
-  setColor: React.Dispatch<React.SetStateAction<string>>;
-}
-const TabGroup: React.FC<IProps> = ({ setColor }) => {
+const TabGroup: React.FC = () => {
   const [from, setFrom] = useState<IUnit>({
     resourceName: "",
     multiplier: 0,
@@ -30,7 +26,7 @@ const TabGroup: React.FC<IProps> = ({ setColor }) => {
   const [numberToConvert, setNumberToConvert] = useState<string>("");
   const [result, setResult] = useState<string>("-");
 
-  const handleNavigateTabs = (color: string) => {
+  const handleNavigateTabs = () => {
     setResult("-");
     setTo({
       resourceName: "",
@@ -40,7 +36,6 @@ const TabGroup: React.FC<IProps> = ({ setColor }) => {
       resourceName: "",
       multiplier: 0,
     });
-    setColor(color);
   };
 
   const handleSwap = () => {
@@ -75,12 +70,10 @@ const TabGroup: React.FC<IProps> = ({ setColor }) => {
             <Tab
               key={u.slug}
               style={{
-                backgroundColor: `${u.color}`,
-                border: 0,
+                borderTop: "solid 1px black",
                 borderRadius: "5px 5px 0 0 ",
-                bottom: "0",
               }}
-              onClick={() => handleNavigateTabs(u.color)}
+              onClick={() => handleNavigateTabs()}
             >
               {u.emoji}
             </Tab>
@@ -89,8 +82,7 @@ const TabGroup: React.FC<IProps> = ({ setColor }) => {
         {units.map((u) => (
           <TabPanel
             style={{
-              backgroundColor: `${u.color}`,
-              border: 0,
+              border: "solid 1px black",
               borderRadius: "10px",
               zIndex: 10,
             }}

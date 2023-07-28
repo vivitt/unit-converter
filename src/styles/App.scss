@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "./mixins";
 @import "./variables";
+
 .App {
   text-align: center;
   padding-top: 5rem;
 }
 
 .converter {
-  font-family: "Pacifico", cursive;
   &__title {
     margin: 0;
     padding-top: 1rem;
@@ -16,7 +15,6 @@
     h4 {
       margin: 0;
       padding: 0;
-      color: white;
     }
   }
   &__form {
@@ -44,6 +42,12 @@
 }
 
 .footer {
+  background-color: rgb(255, 249, 66);
   padding: 3%;
   font-size: 0.9rem;
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

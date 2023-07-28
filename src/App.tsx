@@ -6,7 +6,6 @@ import "./styles/App.scss";
 import TabGroup from "./components/TabGroup";
 
 const App: React.FC = () => {
-  const [color, setColor] = useState<string>("#F0D1FF");
   return (
     <div className="App">
       <Box
@@ -18,10 +17,10 @@ const App: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <TabGroup setColor={setColor} />
+        <TabGroup />
       </Box>
 
-      <Footer color={color} />
+      <Footer />
     </div>
   );
 };

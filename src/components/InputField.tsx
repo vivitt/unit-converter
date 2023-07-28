@@ -11,9 +11,15 @@ interface IProps {
 const InputField: React.FC<IProps> = ({ type, readonly, value, setValue }) => {
   return (
     <TextField
-      sx={{ width: "100px", margin: "3px" }}
+      sx={{
+        width: "100px",
+        margin: "3px",
+        backgroundColor: "white",
+        borderRadius: "4px",
+      }}
       inputProps={{ "data-testid": type }}
       id={type}
+      color="primary"
       variant="outlined"
       value={value}
       // placeholder="0"
