@@ -89,7 +89,7 @@ const TabGroup: React.FC = () => {
           >
             <div className="converter__title">
               <h1>{u.slug[0].toUpperCase() + u.slug.substring(1)}</h1>
-              <h4>Unit Converter</h4>
+              <h2>Unit Converter</h2>
             </div>
             <div className="converter__form">
               <div className="converter__input">
@@ -98,6 +98,7 @@ const TabGroup: React.FC = () => {
                   setValue={setNumberToConvert}
                   type="number"
                   readonly={false}
+                  aria-label="Enter number"
                 />
 
                 <SelectInput
@@ -114,8 +115,9 @@ const TabGroup: React.FC = () => {
                 <Button
                   variant="text"
                   onClick={handleSwap}
-                  sx={{ color: "white" }}
+                  sx={{ color: "black" }}
                   data-testid="swapBtn"
+                  aria-label="Swap units"
                 >
                   {getArrowIcon()}
                 </Button>
@@ -126,6 +128,7 @@ const TabGroup: React.FC = () => {
                   setValue={setResult}
                   type="text"
                   readonly={true}
+                  aria-label="Result"
                 />
                 <SelectInput
                   conversionType={u.slug}
